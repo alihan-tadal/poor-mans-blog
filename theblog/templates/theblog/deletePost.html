@@ -1,0 +1,27 @@
+{% extends 'theblog/base.html' %}
+
+{% block title %}
+    Update the Post
+{% endblock %}
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1> Delete Post </h1>
+<br><br>
+
+<h3>Delete {{ post.title }}</h3>
+<div class="form-group">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="alert alert-danger" role="alert">
+            Deleting "{{ post.title }}". Are you sure? 
+          </div>
+          
+        <button class="btn btn-secondary" >Yes</button>
+    </form>
+</div>
+
+{% endif %}
+{% endblock %}

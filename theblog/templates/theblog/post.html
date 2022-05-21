@@ -1,0 +1,29 @@
+{% extends 'theblog/base.html' %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+<h1>{{ post.title }}</h1>
+<small> by: {{ post.author }} @ {{ post.date }}</small>
+
+
+{% if user.is_authenticated %}
+
+<small> <a href="{% url 'update' post.pk %}">Edit</a> </small>
+<small> <a href="{% url 'delete' post.pk %}">Delete</a> </small>
+
+{% endif %}
+<hr>
+
+<p> {{ post.body|safe }}</p>
+
+<hr>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+{% endblock %}

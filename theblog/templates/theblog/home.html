@@ -1,0 +1,49 @@
+{% extends 'theblog/base.html' %}
+
+{% block title %}
+    The Blog
+{% endblock %}
+
+
+{% block content %}
+
+<h1> Post List </h1>
+<hr>
+
+{% for post in object_list %}
+
+    <ul>
+        <li>
+            <a href="{% url 'post' post.pk %}">{{ post.title }}</a>
+            <p> {{ post.summary }} </p>
+
+
+            {% if user.is_authenticated %}
+            <small> <a href="{% url 'update' post.pk %}">Edit</a> </small>
+            <small> <a href="{% url 'delete' post.pk %}">Delete</a> </small>
+            {% endif %}
+
+            
+        </li>
+    </ul>    
+    <hr>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
